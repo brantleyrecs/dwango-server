@@ -4,11 +4,11 @@
     "pk": 1,
     "fields": {
       "customer_name": "Brantley",
-      "phone_number": "123-555-1234",
+      "phone_number": 1235551234,
       "email": "yes@yes.com",
       "order_type": "walk_in",
       "status": "open",
-      "cashier_id": 2
+      "user_id": 2
     }
   },
   {
@@ -16,23 +16,23 @@
     "pk": 2,
     "fields": {
       "customer_name": "Brantley",
-      "phone_number": "123-555-1234",
+      "phone_number": 1235551234,
       "email": "yes@yes.com",
       "order_type": "walk_in",
       "status": "closed",
-      "cashier_id": 2
+      "user_id": 2
     }
   },
   {
     "model": "dwangoapi.order",
-    "pk": 1,
+    "pk": 3,
     "fields": {
       "customer_name": "Nikol",
-      "phone_number": "123-555-1235",
+      "phone_number": 1235551235,
       "email": "yes@yes.com",
       "order_type": "phone_in",
       "status": "open",
-      "cashier_id": 1
+      "user_id": 1
     }
   }
 ]

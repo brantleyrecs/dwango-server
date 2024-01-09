@@ -1,6 +1,6 @@
 [
   {
-    "model": "dwangoapi.order_items",
+    "model": "dwangoapi.order_item",
     "pk": 1,
     "fields": {
       "order_id": 2,
@@ -8,15 +8,15 @@
     }
   },
   {
-    "model": "dwangoapi.order_items",
-    "pk": 3,
+    "model": "dwangoapi.order_item",
+    "pk": 2,
     "fields": {
       "order_id": 1,
       "item_id": 1
     }
   },
   {
-    "model": "dwangoapi.order_items",
+    "model": "dwangoapi.order_item",
     "pk": 3,
     "fields": {
       "order_id": 3,
