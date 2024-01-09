@@ -1,0 +1,18 @@
+[
+  {
+    "model": "dwangoapi.item",
+    "pk": 1,
+    "fields": {
+      "name": "Cheese Pizza",
+      "price": 5.99
+    }
+  },
+  {
+    "model": "dwangoapi.item",
+    "pk": 2,
+    "fields": {
+      "name": "Pepporoni Pizza",
+      "price": 7.99
+    }
+  }
+]

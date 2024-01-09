@@ -1,0 +1,38 @@
+[
+  {
+    "model": "dwangoapi.order",
+    "pk": 1,
+    "fields": {
+      "customer_name": "Brantley",
+      "phone_number": "123-555-1234",
+      "email": "yes@yes.com",
+      "order_type": "walk_in",
+      "status": "open",
+      "cashier_id": 2
+    }
+  },
+  {
+    "model": "dwangoapi.order",
+    "pk": 2,
+    "fields": {
+      "customer_name": "Brantley",
+      "phone_number": "123-555-1234",
+      "email": "yes@yes.com",
+      "order_type": "walk_in",
+      "status": "closed",
+      "cashier_id": 2
+    }
+  },
+  {
+    "model": "dwangoapi.order",
+    "pk": 1,
+    "fields": {
+      "customer_name": "Nikol",
+      "phone_number": "123-555-1235",
+      "email": "yes@yes.com",
+      "order_type": "phone_in",
+      "status": "open",
+      "cashier_id": 1
+    }
+  }
+]

@@ -1,0 +1,13 @@
+[
+  {
+    "model": "dwangoapi.revenue_node",
+    "pk": 1,
+    "fields": {
+      "order_id": 2,
+      "total_order_amount": 7,
+      "date_of_closure": "2024-01-03",
+      "payment_type": "card",
+      "tip_amount": 2
+    }
+  }
+]
