@@ -6,21 +6,21 @@ from dwangoapi.models import Order
 
 class OrderView(ViewSet):
   
-  """getting single Order"""
   def retrieve(self, request, pk):
+    """getting single Order"""
     order = Order.objects.get(pk=pk)
     serializer = OrderSerializer(order)
     return Response(serializer.data)
   
-  """Getting all Orders"""
   def list(self, request):
+    """Getting all Orders"""
     orders = Order.objects.all()
     serializer = OrderSerializer(orders, many=True)
     return Response(serializer.data)
 
-"""serializer for Order"""
 class OrderSerializer(serializers.ModelSerializer):
+  """serializer for Order"""
   class Meta:
     model=Order
-    fields = ('id', 'customer_name', 'phone_number', 'email', 'order_type', 'status', 'user_id')
+    fields = ('id', 'customer_name', 'phone_number', 'email', 'order_type', 'status', 'user')
     depth = 1

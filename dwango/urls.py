@@ -17,10 +17,11 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
 from rest_framework import routers
-from dwangoapi.views import OrderView
+from dwangoapi.views import OrderView, UserView
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'orders', OrderView, 'order')
+router.register(r'users', UserView, 'user')
 
 urlpatterns = [
     path('', include(router.urls)),
