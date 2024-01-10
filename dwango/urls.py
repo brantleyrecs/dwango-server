@@ -17,11 +17,12 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
 from rest_framework import routers
-from dwangoapi.views import OrderView, ItemView, UserView, RevenueNodeView, check_user, register_user
+from dwangoapi.views import OrderView, ItemView, OrderItemView, UserView, RevenueNodeView, check_user, register_user
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'orders', OrderView, 'order')
 router.register(r'items', ItemView, 'item')
+router.register(r'order-items', OrderItemView, 'order-item')
 router.register(r'users', UserView, 'user')
 router.register(r'revenue-nodes', RevenueNodeView, 'revenue-node')
 
