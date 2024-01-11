@@ -17,6 +17,28 @@ class ItemView(ViewSet):
     items = Item.objects.all()
     serializer = ItemSerializer(items, many=True)
     return Response(serializer.data)
+  
+  def create(self, request):
+    """Create Item"""
+    
+    item = Item.objects.create(
+      name=request.data["name"],
+      price=request.data["price"],
+    )
+    
+    item.save()
+    serializer = ItemSerializer(item)
+    return Response(serializer.data)
+  
+  def update(self, request, pk):
+    """Update Item"""
+    item = Item.objects.get(pk=pk)
+    item.name=request.data["name"]
+    item.price=request.data["price"]
+    
+    item.save()
+    serializer = ItemSerializer(item)
+    return Response(serializer.data)
 
 class ItemSerializer(serializers.ModelSerializer):
   """serializer for Item"""
