@@ -3,6 +3,9 @@ from rest_framework.response import Response
 from rest_framework.viewsets import ViewSet
 from rest_framework import serializers, status
 from dwangoapi.models import Order, User
+from rest_framework.decorators import action
+from dwangoapi.models import Item, Order_Item
+from dwangoapi.serializers import ItemSerializer
 
 class OrderView(ViewSet):
   
@@ -56,9 +59,41 @@ class OrderView(ViewSet):
     order = Order.objects.get(pk=pk)
     order.delete()
     return Response(None, status=status.HTTP_204_NO_CONTENT)
+  
+  @action(methods=['post'], detail=True)
+  def order_item(self, request, pk):
+    """Method to post an item on a single order"""
+    order_id = Order.objects.get(pk=pk)
+    item_id = Item.objects.get(pk=request.data["item"])
+    order_item = Order_Item.objects.create(
+      order=order_id,
+      item=item_id,
+    )
+    return Response(status=status.HTTP_201_CREATED)
+  
+  @action(methods=['get'], detail=True)
+  def items(self, request, pk):
+    """Method to get all the items associated to a single order"""
+    items = Item.objects.all()
+    associated_order = items.filter(order_id=pk)
+    
+    serializer = ItemSerializer(associated_order, many=True)
+    return Response(serializer.data)
+  
+  # @action(methods=['delete', detail=True])
+  # def remove_item(self, request, pk):
+  #   order=Order.objects
+class OrderItemSerializer(serializers.ModelSerializer):
+  price = serializers.ReadOnlyField(source='item.price')
+  name = serializers.ReadOnlyField(source='item.name')
+
+  class Meta:
+    model = Order_Item
+    fields = ('id', 'price','name')
 
 class OrderSerializer(serializers.ModelSerializer):
   """serializer for Order"""
+  items = OrderItemSerializer(many=True, read_only=True)
   class Meta:
     model=Order
     fields = ('id', 'customer_name', 'phone_number', 'email', 'order_type', 'status', 'user', 'items')

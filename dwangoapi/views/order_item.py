@@ -15,6 +15,13 @@ class OrderItemView(ViewSet):
       order_items = Order_Item.objects.all()
       serializer = OrderItemSerializer(order_items, many=True)
       return Response(serializer.data)
+  
+    def destroy(self, request, pk):
+        """Handles Delete request for an order item"""
+        
+        orderitem = Order_Item.objects.get(pk=pk)
+        orderitem.delete()
+        return Response(None)
     
 
 class OrderItemSerializer(serializers.ModelSerializer):
