@@ -54,6 +54,14 @@ class OrderView(ViewSet):
     serializer = OrderSerializer(order)
     return Response(serializer.data)
   
+  @action(methods=['PATCH'], detail=True)
+  def close(self, request, pk=None):
+      """decorator to close order"""
+      order = Order.objects.get(pk=pk)
+      order.status = request.data["status"]
+      order.save()
+      return Response({'status': 'order closed'}, status=status.HTTP_200_OK)
+  
   def destroy(self, request, pk):
     """Delete Order"""
     order = Order.objects.get(pk=pk)
