@@ -11,7 +11,7 @@ class OrderItemView(ViewSet):
         return Response(serializer.data)
     
     def list(self, request):
-      """GET All Song Genres"""
+      """GET All OrderLists"""
       order_items = Order_Item.objects.all()
       serializer = OrderItemSerializer(order_items, many=True)
       return Response(serializer.data)
